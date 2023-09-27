@@ -1,2 +1,2 @@
 # pipeline
-A python pipeline using GitHub Actions
+A pipeline using GitHub Actions
