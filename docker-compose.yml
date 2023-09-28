@@ -1,6 +1,11 @@
 version: '3.9'
 services:
-  myapp:
+  band:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: jest-band-dockerfile
+      
+  parallel:
+    build:
+      context: .
+      dockerfile: jest-parallel-dockerfile

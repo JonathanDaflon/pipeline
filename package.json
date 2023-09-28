@@ -194,7 +194,10 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "jest"
+    "test-in-band": "jest --runInBand",
+    "test-in-parallel": "jest",
+    "docker-in-band": "docker-compose build",
+    "docker-in-parallel": "docker-compose build"
   },
   "repository": {
     "type": "git",
