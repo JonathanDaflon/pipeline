@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        shard: [1, 2, 3, 4]
+        shard: ${{ join(range(1, 101), ',') }}
     
     steps:
       - name: Checkout code
