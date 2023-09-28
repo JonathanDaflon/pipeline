@@ -6,43 +6,58 @@ jobs:
   machine-band:
     name: machine-jests-in-band
     runs-on: ubuntu-latest
+    
     steps:
       - name: checkout code
       - uses: actions/checkout@v2
+      
       - name: Install modules
         run: yarn
+        
       - name: Run tests
         run: yarn test-in-band
+        
   machine-parallel:
     name: machine-jests-in-parallel
     runs-on: ubuntu-latest
     needs: machine-band
+    
     steps:
       - name: checkout code
       - uses: actions/checkout@v2
+      
       - name: Install modules
         run: yarn
+        
       - name: Run tests
         run: yarn test-in-parallel
+        
   docker-band:  
     name: docker-jests-in-band
     runs-on: ubuntu-latest
     needs: machine-parallel
+    
     steps:
       - name: checkout code
       - uses: actions/checkout@v2
+      
       - name: Build Docker image
         run: docker build -t jest-band -f jest-band-dockerfile .
+        
       - name: Run Docker container
         run: docker run -d --name band-container jest-band
+        
   docker-parallel:
     name: docker-jests-in-parallel
     runs-on: ubuntu-latest
     needs:  docker-band
+    
     steps:
       - name: checkout code
       - uses: actions/checkout@v2
+      
       - name: Build Docker image
         run: docker build -t jest-parallel -f jest-parallel-dockerfile .
+        
       - name: Run Docker container
         run: docker run -d --name parallel-container jest-parallel
