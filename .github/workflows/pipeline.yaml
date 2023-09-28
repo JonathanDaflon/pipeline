@@ -3,17 +3,12 @@ name: Pipeline
 on: push
 
 jobs:
-  test:
+  machine:
+    name: github_actions
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: python hello.py
-  build:
-    needs: test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/upload-artifact@v2
-        with:
-          name: artifact
-          path: .
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Run tests
+        run: yarn test
