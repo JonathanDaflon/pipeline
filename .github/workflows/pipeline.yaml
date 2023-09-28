@@ -21,9 +21,9 @@ jobs:
       - name: checkout code
       - uses: actions/checkout@v2
       - name: Install modules
-      - run: yarn
+        run: yarn
       - name: Run tests
-      - run: yarn test-in-parallel
+        run: yarn test-in-parallel
   docker-band:  
     name: docker-jests-in-band
     runs-on: ubuntu-latest
@@ -32,9 +32,9 @@ jobs:
       - name: checkout code
       - uses: actions/checkout@v2
       - name: Build Docker image
-      - run: docker build -t jest-band -f jest-band-dockerfile .
+        run: docker build -t jest-band -f jest-band-dockerfile .
       - name: Run Docker container
-      - run: docker run -d --name band-container jest-band
+        run: docker run -d --name band-container jest-band
   docker-parallel:
     name: docker-jests-in-parallel
     runs-on: ubuntu-latest
@@ -43,6 +43,6 @@ jobs:
       - name: checkout code
       - uses: actions/checkout@v2
       - name: Build Docker image
-      - run: docker build -t jest-parallel -f jest-parallel-dockerfile .
+        run: docker build -t jest-parallel -f jest-parallel-dockerfile .
       - name: Run Docker container
-      - run: docker run -d --name parallel-container jest-parallel
+        run: docker run -d --name parallel-container jest-parallel
