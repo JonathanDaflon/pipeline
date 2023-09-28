@@ -45,7 +45,7 @@ jobs:
         run: docker build -t jest-band -f jest-band-dockerfile .
         
       - name: Run Docker container
-        run: docker run -d --name band-container jest-band
+        run: docker run -d --name band-container jest-band yarn test-in-band
         
   docker-parallel:
     name: docker-jests-in-parallel
@@ -60,4 +60,4 @@ jobs:
         run: docker build -t jest-parallel -f jest-parallel-dockerfile .
         
       - name: Run Docker container
-        run: docker run -d --name parallel-container jest-parallel
+        run: docker run -d --name parallel-container jest-parallel yarn test-in-parallel
