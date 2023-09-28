@@ -3,12 +3,21 @@ name: Pipeline
 on: push
 
 jobs:
-  machine:
-    name: github_actions
+  machine-band:
+    name: machine-jests-in-band
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Install modules
         run: yarn
       - name: Run tests
-        run: yarn test
+        run: yarn test-in-band
+  machine-parallel:
+    name: machine-jests-in-parallel
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install modules
+        run: yarn
+      - name: Run tests
+        run: yarn test-in-parallel
